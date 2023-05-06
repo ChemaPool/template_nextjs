@@ -1,3 +1,35 @@
 {
-  "extends": "next/core-web-vitals"
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "node": true
+    },
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+        "next/core-web-vitals",
+        "eslint:recommended",
+        "prettier",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "plugins": [
+        "prettier",
+        "@typescript-eslint",
+        "eslint-plugin-no-inline-styles"
+    ],
+    "rules": {
+        "prefer-const": "error",
+        "prettier/prettier": "error",
+        "import/order": "error",
+        "no-console": "error",
+        "@typescript-eslint/no-unused-vars": "error",
+        "@typescript-eslint/no-explicit-any": "error",
+        "no-inline-styles/no-inline-styles": 2,
+        "@typescript-eslint/no-empty-interface": [
+            "error",
+            {
+                "allowSingleExtends": true
+            }
+        ],
+        "@typescript-eslint/ban-types": 0
+    }
 }
