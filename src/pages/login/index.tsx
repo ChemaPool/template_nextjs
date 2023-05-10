@@ -3,18 +3,12 @@ import { Card, Image } from "antd";
 import { GetSessionParams, getSession, signIn } from "next-auth/react";
 import { AppleOutlined, FacebookOutlined, GithubOutlined, GoogleOutlined, TwitterOutlined } from "@ant-design/icons";
 import { ReactElement } from "react";
+import { UseTranslationResponse, useTranslation } from "react-i18next";
 
 const { Meta } = Card;
 
 const Index = (): JSX.Element => {
-  // const router: NextRouter = useRouter();
-  // const { data, status }: Session = useSession();
-
-  // useEffect(() => {
-  //   if (status === "unauthenticated" && router?.pathname !== "/login") {
-  //     router?.push("/");
-  //   }
-  // }, [router, status]);
+  const { t }: UseTranslationResponse<"translation", undefined> = useTranslation();
 
   return (
     <>
@@ -36,11 +30,7 @@ const Index = (): JSX.Element => {
             <FacebookOutlined key="facebook" />,
           ]}
         >
-          <Meta
-            // avatar={<Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />}
-            title="Bienvenido al template de NextJs"
-            description="Inicia sesión con el proveedor de tu preferencia"
-          />
+          <Meta title={t("login.title")} description={t("login.subtitle")} />
         </Card>
       </div>
     </>
