@@ -4,8 +4,10 @@ import { DownOutlined, ExclamationCircleFilled, UserOutlined } from "@ant-design
 import { useQuery } from "react-query";
 import axios from "axios";
 import { signOut } from "next-auth/react";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import MenuItems from "src/layout/CustomHeader/menuItems";
+import { GlobalSettings } from "@/context/globalSettings";
 
 const { Header } = Layout;
 const { confirm } = Modal;
@@ -16,20 +18,27 @@ const showConfirmLogout = () => {
     okText: "Si, salir",
     cancelText: "No, permanecer",
     icon: <ExclamationCircleFilled />,
-    content: "Some descriptions",
+    // content: "Some descriptions",
     onOk() {
-      signOut({ callbackUrl: "/api/logout-google" });
+      signOut();
+      // signOut({ callbackUrl: "/api/logout-google" });
     },
   });
 };
 
 const CustomHeader = (): JSX.Element => {
   const { data } = useSession();
+  const { i18n, t } = useTranslation();
+  const { langState, setLangState } = useContext(GlobalSettings);
   const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
 
   const { data: dataProvider } = useQuery("session-providers", () =>
     axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/session-providers`)
   );
+
+  useEffect(() => {
+    i18n.changeLanguage(langState);
+  }, [i18n, langState]);
 
   return (
     <>
@@ -43,6 +52,8 @@ const CustomHeader = (): JSX.Element => {
                 provider: dataProvider?.data?.[`${data?.provider}`]?.name,
                 onCloseSession: showConfirmLogout,
                 setIsDarkMode,
+                setLangState,
+                t,
               }),
             }}
             trigger={["click"]}

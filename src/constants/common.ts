@@ -3,3 +3,10 @@ export enum STATUS_SESSION {
   LOADING = "loading",
   UNAUTHENTICATED = "unauthenticated",
 }
+
+export const COOKIE_LANG = "lang_key";
+
+export enum LANGS {
+  ES = "es",
+  EN = "en",
+}

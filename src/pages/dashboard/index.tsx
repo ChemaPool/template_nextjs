@@ -1,14 +1,15 @@
-import { GetSessionParams, getSession } from "next-auth/react";
+import { GetSessionParams, getSession, useSession } from "next-auth/react";
 import Head from "next/head";
 import DashboardContainer from "@/containers/dashboard";
 
 const Dashboard = (): JSX.Element => {
+  const { data } = useSession();
   return (
     <>
       <Head>
         <title>Template NextJs</title>
       </Head>
-      <DashboardContainer />
+      <DashboardContainer useName={data?.user?.name} />
     </>
   );
 };
