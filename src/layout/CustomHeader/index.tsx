@@ -28,7 +28,7 @@ const CustomHeader = (): JSX.Element => {
   const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
 
   const { data: dataProvider } = useQuery("session-providers", () =>
-    axios.get("http://localhost:3000/api/session-providers")
+    axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/session-providers`)
   );
 
   return (

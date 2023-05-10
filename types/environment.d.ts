@@ -8,5 +8,6 @@ namespace NodeJS {
     GITHUB_ID: string;
     GITHUB_SECRET: string;
     NEXTAUTH_SECRET: string;
+    NEXT_PUBLIC_BASE_URL: string
   }
 }
