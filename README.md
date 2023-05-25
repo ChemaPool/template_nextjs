@@ -1,7 +1,8 @@
 # Please, visit: [Template NextJS](https://template-nextjs-4skq.vercel.app/)
 
-##
-Environment Variables
+# Environment Variables
+
+```bash
 # NextJs
 NEXT_TELEMETRY_DISABLED=1
 
@@ -21,3 +22,13 @@ NEXTAUTH_URL=[YOUR_BASE_URL]
 
 # General
 NEXT_PUBLIC_BASE_URL=[YOUR_ID]
+```
+
+# Stack
+`Ant Design`
+`React Hook Form`
+`Yup schema validation`
+`React Query`
+`Typescript`
+`Axios`
+`i18next`
